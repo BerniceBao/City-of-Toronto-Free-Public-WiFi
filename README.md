@@ -1,4 +1,4 @@
-# Term-Paper-1
+# City-of-Toronto-Free-Public-WiFi
 
 This project is..
 
