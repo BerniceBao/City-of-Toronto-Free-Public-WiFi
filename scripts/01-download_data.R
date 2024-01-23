@@ -15,14 +15,10 @@ library(dplyr)
 
 # get package
 package <- show_package("city-of-toronto-free-public-wifi")
-package
-
 # get all resources for this package
 resources <- list_package_resources("city-of-toronto-free-public-wifi")
-
 # identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
 datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
-
 # load the first datastore resource as a sample
 wifi_data <- filter(datastore_resources, row_number()==1) |> get_resource()
 wifi_data
@@ -31,21 +27,17 @@ wifi_data
 # change raw_data to whatever name you assigned when you downloaded it.
 write_csv(wifi_data, "inputs/data/wifi_data.csv") 
 
-#### Download data 2 ####
-# get package
-package2 <- show_package("6678e1a6-d25f-4dff-b2b7-aa8f042bc2eb")
-package2
-# get all resources for this package
-resources2 <- list_package_resources("6678e1a6-d25f-4dff-b2b7-aa8f042bc2eb")
-# identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
-datastore_resources2 <- filter(resources2, tolower(format) %in% c('csv', 'geojson'))
-# load the first datastore resource as a sample
-ward_data <- filter(datastore_resources, row_number()==1) |> get_resource()
-ward_data
+
+
+#### Download data 2####
+
+df = list_package_resources("6678e1a6-d25f-4dff-b2b7-aa8f042bc2eb") |>
+  filter(name == 
+           "2023-WardProfiles-2011-2021-CensusData") |>
+  get_resource()
+ward_data <- df$`2021 One Variable`
 
 #### Save data 2 ####
-write_csv(ward_data,"inputs/data/ward_data.csv"
-)
-
+write_csv(ward_data,"inputs/data/ward_data.csv")
 
 
