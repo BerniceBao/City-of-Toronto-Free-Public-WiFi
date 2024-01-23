@@ -1,17 +1,20 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Urban Connectivity Dynamics: Analyzing Free Public WiFi Distribution in Toronto by Building Typology, Population, and Socioeconomic Indicators"
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+  - Bernice Bao
+thanks: "Code and data are available at: https://open.toronto.ca/dataset/city-of-toronto-free-public-wifi/, and https://open.toronto.ca/dataset/ward-profiles-25-ward-model/."
 date: today
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: pdf
+format: 
+  pdf:
+    fig-pos: "H"
+toc: true
 number-sections: true
 bibliography: references.bib
 ---
+
+abstract: "In addition to the COVID-19 pandemic, a surge in fire incidents across the city of Toronto became a more pressing concern. Confined within your homes to ensure safety through isolation, the looming threat of household fires increases. Whether it be a measly kitchen fire to apartment evacuation-level threats, this analysis aims to contextualize data into narratives that can be absorbed and develop valuable insights. With data observation and analysis, a more compelling story will be discovered which will shed light on the broader events occurring in the world beyond the raw numbers."
 
 ```{r}
 #| include: false
@@ -115,8 +118,6 @@ Our results are summarized in @tbl-modelresults.
 
 library(rstanarm)
 
-first_model <-
-  readRDS(file = here::here("outputs/models/first_model.rds"))
 ```
 
 ```{r}
@@ -126,13 +127,6 @@ first_model <-
 #| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
 #| warning: false
 
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
 ```
 
 
@@ -179,15 +173,7 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 #| fig-cap: "Examining how the model fits, and is affected by, the data"
 #| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
 
-pp_check(first_model) +
-  theme_classic() +
-  theme(legend.position = "bottom")
 
-posterior_vs_prior(first_model) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  coord_flip()
 ```
 
 ## Diagnostics
@@ -206,9 +192,7 @@ posterior_vs_prior(first_model) +
 #| fig-subcap: ["Trace plot", "Rhat plot"]
 #| layout-ncol: 2
 
-plot(first_model, "trace")
 
-plot(first_model, "rhat")
 ```
 
 
