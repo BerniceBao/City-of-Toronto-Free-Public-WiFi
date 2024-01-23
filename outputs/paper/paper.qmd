@@ -20,9 +20,21 @@ abstract: "In addition to the COVID-19 pandemic, a surge in fire incidents acros
 #| include: false
 #| warning: false
 #| message: false
+#| echo: false
 
+#### Workspace set-up ####
 library(tidyverse)
 library(palmerpenguins)
+library(dplyr)
+library(lubridate)
+library(here)
+
+#### Read in the data ####
+cleaned_data <-
+  read_csv(
+    file = here("inputs/data/cleaned_data.csv"),
+    show_col_types = FALSE
+  )
 ```
 
 

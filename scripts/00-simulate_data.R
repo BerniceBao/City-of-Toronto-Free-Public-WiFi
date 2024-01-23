@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Simulate data on Location and description data of all City of Toronto free public WiFi locations and make table
+# Purpose: Get data on Location and description data of all City of Toronto free public WiFi locations and make table
 # Author: Bernice Bao
 # Date: 23 January 2024 
 # Contact: bernice.bao@mail.utoronto.ca
@@ -27,20 +27,16 @@ set.seed(85)
 
 simulated_occupancy_data <-
   tibble(
-    date = rep(x = as.Date("2021-01-01") + c(0:364), times = 3),
-    # Based on Eddelbuettel: https://stackoverflow.com/a/21502386
-    shelter = c(
-      rep(x = "Shelter 1", times = 365),
-      rep(x = "Shelter 2", times = 365),
-      rep(x = "Shelter 3", times = 365)
+    has_wifi = rep(x = "Y", times = 100),
+    # Based on: https://www.toronto.ca/city-government/accountability-operations-customer-service/long-term-vision-plans-and-strategies/smart-cityto/internet-connectivity-connectto/connectto-free-public-wifi-locations/
+    building_type = c(
+      rep(x = "library", times = 20),
+      rep(x = "Arena", times = 40),
+      rep(x = "Community", times = 40)
     ),
-    number_occupied =
-      rpois(
-        n = 365 * 3,
-        lambda = 30
-      ) # Draw 1,095 times from the Poisson distribution
+    ward = rep(c(x = "Etobicoke North", "Etobicoke Centre", "Etobicoke-Lakeshore", "Parkdale-High Park", "York South-Weston", "York Centre", "Humber River-Black Creek", "Eglinton-Lawrence", "Davenport", "Spadina-Fort York", "University-Rosedale", "Toronto-St. Paul's", "Toronto Centre", "Toronto-Danforth", "Don Valley West", "Don Valley East", "Don Valley North", "Willowdale", "Beaches-East York", "Scarborough Southwest", "Scarborough Centre", "Scarborough-Agincourt", "Scarborough North", "Scarborough-Guildwood", "Scarborough-Rouge Park"), times = 4),
+    ward_number =rep(c(1:25), times = 4)
   )
 
 head(simulated_occupancy_data)
-
 
