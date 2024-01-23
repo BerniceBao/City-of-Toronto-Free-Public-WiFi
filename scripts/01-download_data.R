@@ -33,12 +33,19 @@ write_csv(wifi_data, "inputs/data/wifi_data.csv")
 
 #### Download data 2 ####
 # get package
-ward_profiles <- show_package("6678e1a6-d25f-4dff-b2b7-aa8f042bc2eb")
-ward_profiles
-
-write_csv(ward_profiles,"inputs/data/ward_profiles.csv"
-)
+package2 <- show_package("6678e1a6-d25f-4dff-b2b7-aa8f042bc2eb")
+package2
+# get all resources for this package
+resources2 <- list_package_resources("6678e1a6-d25f-4dff-b2b7-aa8f042bc2eb")
+# identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
+datastore_resources2 <- filter(resources2, tolower(format) %in% c('csv', 'geojson'))
+# load the first datastore resource as a sample
+ward_data <- filter(datastore_resources, row_number()==1) |> get_resource()
+ward_data
 
 #### Save data 2 ####
-head(ward_profiles)
+write_csv(ward_data,"inputs/data/ward_data.csv"
+)
+
+
 
