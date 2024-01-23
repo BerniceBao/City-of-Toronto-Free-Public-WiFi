@@ -1,4 +1,4 @@
-# City-of-Toronto-Free-Public-WiFi
+# City of Toronto Free Public WiFi
 
 This project is..
 
