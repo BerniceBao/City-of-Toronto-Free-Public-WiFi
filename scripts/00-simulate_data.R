@@ -4,7 +4,7 @@
 # Date: 23 January 2024 
 # Contact: bernice.bao@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: -
+# Pre-requisites: NA
 
 
 #### Workspace setup ####

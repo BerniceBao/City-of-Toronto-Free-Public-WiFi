@@ -1,0 +1,195 @@
+BuildingType,Ward,WardNumber
+Arena,Etobicoke North,1
+Arena,Don Valley East,16
+Arena,Willowdale,18
+Arena,Humber River-Black Creek,7
+Arena,Humber River-Black Creek,7
+Arena,Humber River-Black Creek,7
+Arena,Parkdale-High Park,4
+Arena,Etobicoke-Lakeshore,3
+Arena,Etobicoke-Lakeshore,3
+Arena,Don Valley East,16
+Arena,Don Valley West,15
+"Arena,Artificial Ice Rink Building,Community Recreation Centre,Outdoor Pool Building,Washroom Building",Don Valley North,17
+"Arena,Artificial Ice Rink Building,Washroom Building",Toronto-St. Paul's,12
+"Arena,Community Recreation Centre",Scarborough North,23
+"Arena,Community Recreation Centre",Scarborough-Guildwood,24
+"Arena,Community Recreation Centre",Scarborough North,23
+"Arena,Community Recreation Centre",Don Valley East,16
+"Arena,Community Recreation Centre",Scarborough Southwest,20
+"Arena,Community Recreation Centre",Scarborough Rouge-Park,25
+"Arena,Community Recreation Centre",Scarborough-Guildwood,24
+"Arena,Community Recreation Centre,Outdoor Pool Building",Humber River-Black Creek,7
+"Arena,Community Recreation Centre,Outdoor Pool Building",York Centre,6
+"Arena,Community Recreation Centre,Outdoor Pool Building",Scarborough Rouge-Park,25
+"Arena,Community Recreation Centre,Outdoor Pool Building",Scarborough Centre,21
+"Arena,Community Recreation Centre,Outdoor Pool Building",Don Valley North,17
+"Arena,Community Recreation Centre,Outdoor Pool Building",York Centre,6
+"Arena,Washroom Building",Etobicoke-Lakeshore,3
+"Artificial Ice Rink Building,Changeroom Building,Community Recreation Centre,Washroom Building",Etobicoke-Lakeshore,3
+"Artificial Ice Rink Building,Community Recreation Centre,Outdoor Pool Building,Washroom Building",Don Valley East,16
+"Artificial Ice Rink Building,Community Recreation Centre,Outdoor Pool Building,Washroom Building",Eglinton-Lawrence,8
+"Artificial Ice Rink Building,Community Recreation Centre,Washroom Building",Toronto-Danforth,14
+Community Recreation Centre,Etobicoke North,1
+Community Recreation Centre,York-South-Weston,5
+Community Recreation Centre,York Centre,6
+Community Recreation Centre,Parkdale-High Park,4
+Community Recreation Centre,York Centre,6
+Community Recreation Centre,Eglinton-Lawrence,8
+Community Recreation Centre,Beaches-East York,19
+Community Recreation Centre,Scarborough Centre,21
+Community Recreation Centre,Spadina-Fort York,10
+Community Recreation Centre,Scarborough-Guildwood,24
+Community Recreation Centre,Humber River-Black Creek,7
+Community Recreation Centre,Don Valley East,16
+Community Recreation Centre,Willowdale,18
+Community Recreation Centre,Toronto-Danforth,14
+Community Recreation Centre,Willowdale,18
+Community Recreation Centre,Etobicoke North,1
+Community Recreation Centre,Etobicoke Centre,2
+Community Recreation Centre,Toronto-St. Paul's,12
+Community Recreation Centre,Etobicoke-Lakeshore,3
+Community Recreation Centre,York South-Weston,5
+Community Recreation Centre,Don Valley East,16
+Community Recreation Centre,Etobicoke-Lakeshore,3
+Community Recreation Centre,Don Valley West,15
+Community Recreation Centre,Toronto Centre,13
+Community Recreation Centre,Davenport,9
+Community Recreation Centre,Scarborough-Agincourt,22
+Community Recreation Centre,Davenport,9
+Community Recreation Centre,Parkdale-High Park,4
+Community Recreation Centre,Toronto-Danforth,14
+Community Recreation Centre,Scarborough North,23
+Community Recreation Centre,Etobicoke North,1
+Community Recreation Centre,Scarborough Southwest,20
+Community Recreation Centre,Etobicoke-Lakeshore,3
+Community Recreation Centre,Toronto Centre,13
+Community Recreation Centre,Don Valley North,17
+Community Recreation Centre,Scarborough Rouge-Park,25
+Community Recreation Centre,Toronto Centre,13
+Community Recreation Centre,Beaches-East York,19
+Community Recreation Centre,Beaches-East York,19
+Community Recreation Centre,Scarborough-Agincourt,22
+Community Recreation Centre,Scarborough-Agincourt,22
+Community Recreation Centre,Etobicoke North,1
+Community Recreation Centre,Etobicoke North,1
+Community Recreation Centre,Don Valley West,15
+Community Recreation Centre,Spadina-Fort York,10
+Community Recreation Centre,Scarborough Southwest,20
+Community Recreation Centre,Toronto Centre,13
+Community Recreation Centre,Etobicoke North,1
+"Community Recreation Centre,Outdoor Pool Building",York-South-Weston,5
+"Community Recreation Centre,Outdoor Pool Building",Humber River-Black Creek,7
+"Community Recreation Centre,Outdoor Pool Building",Humber River-Black Creek,7
+"Community Recreation Centre,Outdoor Pool Building",Eglinton-Lawrence,8
+"Community Recreation Centre,Outdoor Pool Building",Humber River-Black Creek,7
+"Community Recreation Centre,Outdoor Pool Building",Humber River-Black Creek,7
+"Community Recreation Centre,Outdoor Pool Building",Beaches-East York,19
+"Community Recreation Centre,Outdoor Pool Building,Washroom Building",Eglinton-Lawrence,8
+"Community Recreation Centre,School",Etobicoke North,1
+Library,Scarborough-Agincourt,22
+Library,Scarborough Southwest,20
+Library,Etobicoke North,1
+Library,Etobicoke-Lakeshore,3
+Library,York South-Weston,5
+Library,Parkdale-High Park,4
+Library,Eglinton-Lawrence,8
+Library,Eglinton-Lawrence,8
+Library,Don Valley North,17
+Library,Beaches-East York,19
+Library,Scarborough Centre,21
+Library,Humber River-Black Creek,7
+Library,Davenport,9
+Library,Etobicoke-Lakeshore,3
+Library,Scarborough-Agincourt,22
+Library,Don Valley East,16
+Library,Scarborough North,23
+Library,Scarborough-Guildwood,24
+Library,York Centre,6
+Library,Spadina-Fort York,10
+Library,Scarborough Southwest,20
+Library,University-Rosedale,11
+Library,Beaches-East York,19
+Library,Toronto-St. Paul's,12
+Library,Beaches-East York,19
+Library,Toronto-St. Paul's,12
+Library,Don Valley East,16
+Library,York Centre,6
+Library,Davenport,9
+Library,Etobicoke Centre,2
+Library,Scarborough Southwest,20
+Library,Etobicoke Centre,2
+Library,York South-Weston,5
+Library,Don Valley North,17
+Library,Don Valley East,16
+Library,Eglinton-Lawrence,8
+Library,Spadina-Fort York,10
+Library,Toronto-Danforth,14
+Library,Scarborough North,23
+Library,Scarborough-Guildwood,24
+Library,Parkdale-High Park,4
+Library,Scarborough-Rouge Park,25
+Library,Don Valley North,17
+Library,Etobicoke-Lakeshore,3
+Library,Humber River-Black Creek,7
+Library,Etobicoke North,1
+Library,Parkdale-High Park,4
+Library,Humber River-Black Creek,7
+Library,Toronto-Danforth,14
+Library,Scarborough Centre,21
+Library,Don Valley West,15
+Library,University-Rosedale,11
+Library,Don Valley West,15
+Library,Etobicoke-Lakeshore,3
+Library,Beaches-East York,19
+Library,Scarborough-Rouge Park,25
+Library,Toronto-St. Paul's,12
+Library,Scarborough Centre,21
+Library,Scarborough Centre,21
+Library,Etobicoke-Lakeshore,3
+Library,Scarborough-Rouge Park,25
+Library,York South-Weston,5
+Library,Don Valley West,15
+Library,Etobicoke-Lakeshore,3
+Library,Willowdale,18
+Library,Eglinton-Lawrence,8
+Library,Etobicoke North,1
+Library,Toronto-St. Paul's,12
+Library,University-Rosedale,11
+Library,Toronto-Danforth,14
+Library,Parkdale-High Park,4
+Library,Toronto Centre,13
+Library,Davenport,9
+Library,Don Valley North,17
+Library,Scarborough-Rouge Park,25
+Library,Toronto-Danforth,14
+Library,Etobicoke North,1
+Library,Etobicoke Centre,2
+Library,Toronto-Danforth,14
+Library,Parkdale-High Park,4
+Library,Toronto-Danforth,14
+Library,Spadina-Fort York,10
+Library,Scarborough Centre,21
+Library,University-Rosedale,11
+Library,Davenport,9
+Library,Toronto Centre,13
+Library,Toronto Centre,13
+Library,Scarborough-Agincourt,22
+Library,Parkdale-High Park,4
+Library,Scarborough Southwest,20
+Library,Don Valley West,15
+Library,Toronto-Danforth,14
+Library,University-Rosedale,11
+Library,Don Valley East,16
+Library,York South-Weston,5
+Library,Scarborough North,23
+Library,Humber River-Black Creek,7
+Library,Toronto-St. Paul's,12
+Library,Humber River-Black Creek,7
+Library,University-Rosedale,11
+NA,Scarborough-Guildwood,24
+NA,Etobicoke Centre,2
+NA,Toronto Centre,13
+NA,Toronto Centre,13
+NA,Scarborough-Rouge Park,25
+NA,York South-Weston,05
