@@ -3,13 +3,13 @@ title: "Urban Connectivity Dynamics: Analyzing Free Public WiFi Distribution in 
 author: 
   - Bernice Bao
 thanks: "Code and data are available at: https://open.toronto.ca/dataset/city-of-toronto-free-public-wifi/, and https://open.toronto.ca/dataset/ward-profiles-25-ward-model/."
-date: today
+date: 23 January 2024
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: 
-  pdf:
-    fig-pos: "H"
+format: pdf
+fig-pos: "H"
 toc: true
+echo: false
 number-sections: true
 bibliography: references.bib
 ---

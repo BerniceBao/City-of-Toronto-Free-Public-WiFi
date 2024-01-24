@@ -34,6 +34,7 @@ head(cleaned_wifi_data)
 write_csv(cleaned_wifi_data, "outputs/data/cleaned_wifi_data.csv")
 
 
+
 #### Clean data 2 ####
 # load in raw data
 raw_ward_data <- read_csv("inputs/data/ward_data.csv")
@@ -42,19 +43,29 @@ raw_ward_data <- read_csv("inputs/data/ward_data.csv")
 cleaned_ward_data <-
   raw_ward_data |>
   filter(`City of Toronto Profiles` == "Total - Age" | `City of Toronto Profiles` == "Total - Household total income groups in 2020 for private households - 25% sample data")|> # filter on the population and income
-  select(`City of Toronto Profiles`,...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ...11, ...12, ...13, ...14, ...15, ...16, ...17, ...18, ...19, ...20, ...21, ...22, ...23, ...24, ...25) # only select the relevant columns
+  select(`City of Toronto Profiles`, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ...11, ...12, ...13, ...14, ...15, ...16, ...17, ...18, ...19, ...20, ...21, ...22, ...23, ...24, ...25, ...26, ...27) |># only select the relevant columns
+  t()
 
 # since this dataset organizes the data in first column as variables
 # the variables I interested in have to be considered as observations by R 
-# so I create a new database and keep all the data same 
-# just move the variables to the correct position
+# so I create a new data frame and keep all the data same 
+# move the variables to the correct position
+
+cleaned_ward_data <- data.frame(cleaned_ward_data)
+colnames(cleaned_ward_data ) <- cleaned_ward_data[1,]
+cleaned_ward_data <- cleaned_ward_data[-1,]
+rownames(cleaned_ward_data) <- 1:25
+
+cleaned_ward_data <- cleaned_ward_data |> mutate(WardNumber = c(1:25))
 
 # rename the variables
-cleaned_ward_data <- mutate(poppulation = ) |> rename(population = Total - Age)
+cleaned_ward_data <-
+  cleaned_ward_data |>
+  rename(Population = `Total - Age`, Income = `Total - Household total income groups in 2020 for private households - 25% sample data`)
 
-head(cleaned_wifi_data)
+head(cleaned_ward_data)
 
 #### Save data ####
 # write cleaned data as csv
-write_csv(cleaned_wifi_data, "outputs/data/cleaned_wifi_data.csv")
+write_csv(cleaned_ward_data, "outputs/data/cleaned_ward_data.csv")
 
