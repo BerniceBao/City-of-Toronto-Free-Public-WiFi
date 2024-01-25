@@ -72,7 +72,7 @@ The data used for analysis in this article is as of January 3, 2024. According t
 #| echo: false
 
 cleaned_wifi_data %>%
-  head(8) %>%
+  head(10) %>%
   kable(
     col.names = c("Building type", "Ward", "Ward Number"),
     digits = 1
@@ -80,20 +80,23 @@ cleaned_wifi_data %>%
 
 ```
 
+From the Location and description data of Toronto free public WiFi, as of January 3, 2024, there are 194 free public WiFi location in the City of Toronto. Further breakdown shows that there are 27 free public WiFi location that are set in Arena, 74 free public WiFi location that are set in Community Recreation Centre, 17 free public WiFi location that are set in Outdoor Pool Building clinics, and  100 free public WiFi location that are set in library. Since the same wifi may cover multiple buildings, the sum of the number of public wifi corresponding to each building type is greater than the total number of public wifi in Toronto. The four building types mentioned above have the largest number of public wifi, covering almost 90% of total.
 
+Library has the highest number of free public WiFi, which means that, in comparison to other types of buildings in Toronto, libraries offer the highest availability or coverage of free public WiFi services. This suggests that libraries prioritize or invest in providing accessible and free internet connectivity to the public within Toronto. Besides, Community Recreation Centre has the second most amount of free public WiFi. This information is indicative of the efforts or infrastructure investments made by Community Recreation Centres to offer accessible and free internet connectivity to the public. 
 
 ## 2021 Ward Profiles based on the 25-Ward model
 
 In order to deeply understand the factors affecting the distribution of public wifi in Toronto, I will study the population and income of each ward in Toronto on this basis. Therefore, the regional profile dataset (Data 2021), based on the 2021 Census data, was also included in the analysis. The dataset, published by City Planning, was last updated on January 3, 2024. The dataset contains demographic, social and economic information such as income and population for each ward.
 
 Ward profile data is stored in an Excel file with multiple tabs. The relevant data used for this analysis is included as a variable in the first TAB, the 2021 Census. Therefore, only the data from this TAB is downloaded for analysis. Further data cleansing was done to transform the data, retaining only information related to income and population levels in each ward (see @tbl-ward). Based on the Toronto Open Data Portal, the package has a CSV file, 25 ward names and numbers, which contains the mapping between ward codes and ward names. I create statistic to visualize these data, using kable() from knitr to create @tbl-ward.
+
 ```{r}
 #| label: tbl-ward
 #| tbl-cap: Sample of cleaned Ward of Toronto data
 #| echo: false
 
 cleaned_ward_data %>%
-  head(8) %>%
+  head(10) %>%
   kable(
     col.names = c("Population", "Income", "Ward Number"),
     digits = 1
@@ -101,7 +104,32 @@ cleaned_ward_data %>%
 
 ```
 
+There are 25 wards in the City of Toronto. Based 2021 census data, the wards with the highest population are:
+Etobicoke-Lakeshore (Ward 3) at 139920, Spadina-Fort York (Ward 10) at 135400, and Etobicoke Centre (Ward 2) at 117200. The wards with the lowest population are: Scarborough North (Ward
+23) at 94025, Don Valley East (Ward 16) at 94335, and Don Valley West (Ward
+15) at 101025.
 
+
+The wards with the highest household income are: Spadina-Fort York (Ward 10) at $ 80730,
+Toronto Centre (Ward 13) at $68965, and Etobicoke-Lakeshore (Ward 3) at $65575. The
+wards with the lowest household income are: Humber River-Black Creek (Ward 7) at $65,458,
+York South-Weston (Ward 5) at $67,964, and Scarborough Centre (Ward 21) at $70,624.
+
+# Conclusion {#sec-conclusion}
+
+## Demand
+
+**Societal need for public Wi-Fi differs according to building types**
+
+The type of building can often reflect the different needs of modern people for WiFi, and having more public WiFi coverage proves that it has a stronger degree of Internet digitization needs. 
+
+For example, libraries have embraced technology, expanding their offerings beyond books to include a rich array of digital resources. Public WiFi is now a vital tool for students, researchers, and casual readers, facilitating access to online databases, ebooks, and collaborative group projects. Moreover, Community Recreation Centre have transformed into dynamic digital hubs, serving as venues for social gatherings and work. Here, individuals can check emails, work remotely, and stay informed about current events, all while enjoying a cup of coffee.
+
+
+
+## Population
+
+**Higher population density correlates with increased distribution of free public WiFi**
 
 ```{r}
 #| label: fig-1
@@ -121,8 +149,14 @@ analysis_data_1 |>
 
 ```
 
+From this graph, we can clearly see that Etobicoke-Lakeshore (Ward 3) has the greatest population, and Spadina-Fort York (Ward 10) has the second greatest population.
 
-Talk way more about it. 
+In fact, this is similar to the distribution of free public WiFi in Toronto, but it does not exactly match. Ward 3, as the most populous area, has 13 public WiFi, which is a relatively large number in all Wards, and Ward 10 has 5, which is an insignificant number. But overall, for different Wards, a higher population slightly results in a higher amount of public WiFi.
+
+## Income
+
+**Income levels have limited influence on availability of free public Wi-Fi**
+
 
 ```{r}
 #| label: fig-2
@@ -143,28 +177,16 @@ analysis_data_1 |>
 
 ```
 
+From this graph, we can clearly see that Spadina-Fort York (Ward 10) has the greatest average income, Toronto Centre (Ward 13) has the second greatest average income, and Etobicoke-Lakeshore (Ward 3) has the third greatest average income.
 
-
-
-
-# Conclusion {#sec-conclusion}
-
-## Demand
-
-Societal need for public Wi-Fi differs according to building types
-
-
-## Population
-
-Higher population density correlates with increased distribution of free public WiFi
-
-## Economy
-
-Income levels have limited influence on availability of free public Wi-Fi
+We can conclude that there is no observable correlation between the number of Toronto public WiFi and the average household income in a ward.
 
 
 \newpage
 
+All in all, a significant number of people are increasingly relying on public Wi-Fi when they're out and about, underscoring their need for instant, hassle-free connectivity. Whether for work, social interaction or navigation, the modern lifestyle requires a seamless Internet experience, and the increasing number of academic and recreational projects joining the ranks of the application of public free WiFi is undoubtedly a strong support for the development of public WiFi in Toronto.
+
+Furthermore, our data analysis indicates that while population size does exert a modest impact on the dissemination of free WiFi, the average income of a region lacks sufficient influence to be regarded as a determining factor in the allocation of public WiFi.
 
 # References
 
