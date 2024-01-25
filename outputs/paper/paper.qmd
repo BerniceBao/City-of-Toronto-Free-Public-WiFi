@@ -57,7 +57,7 @@ This research is divided into three main parts: Introduction@sec-intro, Data@sec
 
 # Data {#sec-data}
 
-In this section I will be diving deeper into the various modes of `R`-based [@citeR] data collection and generation within `RStudio` [@citeRStudio].  The data used in this paper is retrieved from the `opendatatoronto` R package [@citeODT], namely, the Toronto fire incidents dataset.  Other R packages including functionalities from `tidyverse` [@citeTidyverse], `here` [@citeHere], `readr` [@citeReadr], `ggplot2` [@citeGgplot2], `knitr` [@citeKnitr], and `dplyr` [@citeDplyr].  Greater detail concerning the utilization of the mentioned packages will be further explained in the following subsections.
+In this section, I will explore the diverse modes of `R`-based data collection and generation within the `RStudio` environment [@citeR; @citeRStudio]. The data under scrutiny in this paper originates from the `opendatatoronto` R package [@citeODT], specifically drawing from the Toronto fire incidents dataset. The analysis benefits from additional functionalities harnessed from various R packages such as `tidyverse` [@citeTidyverse], `here` [@citeHere], `readr` [@citeReadr], `ggplot2` [@citeGgplot2], `knitr` [@citeKnitr], and `dplyr` [@citeDplyr]. Further insights into the deployment of these packages will be expounded upon in the ensuing subsections.
 
 ## Location and description data of Toronto free public WiFi
 
@@ -102,7 +102,7 @@ cleaned_ward_data %>%
 ```
 
 
-And also planes (@fig-1). 
+
 ```{r}
 #| label: fig-1
 #| fig-cap: Relationship between Population of each Ward and Amount of Free Public WiFi Location
@@ -117,7 +117,7 @@ analysis_data_1 |>
   geom_point(alpha = 0.8) +
   theme_minimal() +
   labs(x = "Population of each Ward",
-       y = "Amount of Free Public WiFi Location")
+       y = "Ward Number")
 
 ```
 
@@ -139,24 +139,28 @@ analysis_data_1 |>
   geom_point(alpha = 0.8) +
   theme_minimal() +
   labs(x = "Income of each Ward",
-       y = "Amount of Free Public WiFi Location")
+       y = "Ward Number")
 
 ```
 
 
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
 
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
 
 # Conclusion {#sec-conclusion}
 
-## Demand: Societal need for public Wi-Fi differs according to building types
+## Demand
 
-Our results are summarized in @tbl-modelresults.
+Societal need for public Wi-Fi differs according to building types
 
-## Population: Higher population density correlates with increased distribution of free public WiFi
-## Economy: Income levels have limited influence on availability of free public Wi-Fi
+
+## Population
+
+Higher population density correlates with increased distribution of free public WiFi
+
+## Economy
+
+Income levels have limited influence on availability of free public Wi-Fi
 
 
 \newpage
