@@ -25,7 +25,7 @@ citation("ggplot2") # Get citation information for a package
 #### Simulate data ####
 set.seed(85)
 
-simulated_occupancy_data <-
+simulated_data <-
   tibble(
     has_wifi = rep(x = "Y", times = 100),
     # Based on: https://www.toronto.ca/city-government/accountability-operations-customer-service/long-term-vision-plans-and-strategies/smart-cityto/internet-connectivity-connectto/connectto-free-public-wifi-locations/
@@ -38,5 +38,7 @@ simulated_occupancy_data <-
     ward_number =rep(c(1:25), times = 4)
   )
 
-head(simulated_occupancy_data)
+head(simulated_data)
 
+#### Save data ####
+write_csv(simulated_data,"outputs/data/simulated_data.csv")
