@@ -1,20 +1,18 @@
 ---
-title: "Urban Connectivity Dynamics: Analyzing Free Public WiFi Distribution in Toronto by Building Typology, Population, and Socioeconomic Indicators"
+title: "Urban Connectivity Dynamics: Analyzing Free Public WiFi Distribution in Toronto"
+subtitle: "By Building Typology, Population, and Socioeconomic Indicators"
 author: 
   - Bernice Bao
-thanks: "Code and data are available at: https://open.toronto.ca/dataset/city-of-toronto-free-public-wifi/, and https://open.toronto.ca/dataset/ward-profiles-25-ward-model/."
+thanks: "Code and data are available at: <https://open.toronto.ca/dataset/city-of-toronto-free-public-wifi/>, and <https://open.toronto.ca/dataset/ward-profiles-25-ward-model/>."
 date: 23 January 2024
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "In the era of increasing digital dependence, understanding the intricacies of urban internet connectivity is pivotal for fostering an effective and technologically equitable society. Public WiFi is a vital tool in modern society, offering internet access and supporting economic development, education, and social connections. In response to the increasing importance of internet connectivity in contemporary urban life, I investigate the distribution of free public WiFi in Toronto. This paper aims to provide key statistics on the distribution of public WiFi in Toronto and analyze the impact of building types, demographics, and economic influences on its distribution to gain as comprehensive a picture as possible of the role and impact of public WiFi in our lives."
 format: pdf
 fig-pos: "H"
 toc: true
-echo: false
 number-sections: true
 bibliography: references.bib
 ---
-
-abstract: "In addition to the COVID-19 pandemic, a surge in fire incidents across the city of Toronto became a more pressing concern. Confined within your homes to ensure safety through isolation, the looming threat of household fires increases. Whether it be a measly kitchen fire to apartment evacuation-level threats, this analysis aims to contextualize data into narratives that can be absorbed and develop valuable insights. With data observation and analysis, a more compelling story will be discovered which will shed light on the broader events occurring in the world beyond the raw numbers."
 
 ```{r}
 #| include: false
@@ -24,189 +22,141 @@ abstract: "In addition to the COVID-19 pandemic, a surge in fire incidents acros
 
 #### Workspace set-up ####
 library(tidyverse)
+library(lubridate)
+library(knitr)
 library(palmerpenguins)
 library(dplyr)
-library(lubridate)
 library(here)
 
 #### Read in the data ####
-cleaned_data <-
+cleaned_wifi_data <-
   read_csv(
-    file = here("inputs/data/cleaned_data.csv"),
+    file = here("outputs/data/cleaned_wifi_data.csv"),
+    show_col_types = FALSE
+  )
+#### Read in the data ####
+cleaned_ward_data <-
+  read_csv(
+    file = here("outputs/data/cleaned_ward_data.csv"),
     show_col_types = FALSE
   )
 ```
 
 
-# Introduction
+# Introduction {#sec-intro}
 
-You can and should cross-reference sections and sub-sections. 
+In an era characterized by an ever-deepening reliance on digital technologies, the intricate tapestry of urban internet connectivity is emerging as a pivotal force in the transformation of our societal fabric. Countries globally are acknowledging internet access as an indispensable tool for active participation in contemporary democratic societies. In Canada, the Canadian Radio-television and Telecommunications Commission (CRTC) has recognized that "broadband internet access services are crucial to Canada’s economic, social, democratic, and cultural fabric." As a university student navigating the complexities of contemporary living, the significance of understanding these dynamics cannot be overstated. We are acutely aware of the transformative potential that connectivity holds.
 
-The remainder of this paper is structured as follows. @sec-data....
+Public WiFi, often taken for granted in our daily lives, emerges as a vital tool shaping the contours of a technologically inclusive society. It plays a pivotal role in modern society, offering a myriad of benefits to individuals.  Beyond providing a cost-effective alternative to cellular data, it fosters internet accessibility, enabling people to stay connected without constraints.  This flexibility and mobility are particularly advantageous for students, travelers, and those on a budget, allowing them to work, study, or communicate from diverse locations.  Moreover, public WiFi contributes to social inclusion, bridging the digital divide and ensuring that even those without home internet access can engage in online activities.  Access to information, job searching, and remote work opportunities are further facilitated, enhancing the overall quality of life.  In emergencies, public WiFi serves as a crucial communication lifeline, demonstrating its indispensable role in connecting people and providing access to vital services.                  
+
+Beyond the conveniences of internet access, it serves as a linchpin fostering economic development, facilitating education, and fortifying social connections. The present study, anchored in the evolving landscape of Toronto, endeavors to unravel the mysteries surrounding the distribution of public WiFi. This paper embarks on a compelling exploration of the distribution of free public WiFi in Toronto, recognizing it as not merely a technological amenity but a cornerstone of our modern existence. By examining the impact of various factors, such as building types, demographic patterns, and economic influences, this research seeks to paint a comprehensive portrait of the role and impact of public WiFi in our lives, providing readers with a lens to comprehend the symbiotic relationship between technology and urban living.
+
+This research is divided into three main parts: Introduction@sec-intro, Data@sec-data, and Conclusion@sec-conclusion. Commencing with the Data section, a meticulous exposition ensues, delineating the origin of datasets garnered from the OpenDataToronto Library and expounding upon the procedural rigors applied for data refinement and analysis. The conclusion part shows what I found during the analysis, while goes deeper into those findings, and finally wraps up the main discoveries from this paper about public free WiFi in Toronto.
 
 
 
 # Data {#sec-data}
 
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
+In this section I will be diving deeper into the various modes of `R`-based [@citeR] data collection and generation within `RStudio` [@citeRStudio].  The data used in this paper is retrieved from the `opendatatoronto` R package [@citeODT], namely, the Toronto fire incidents dataset.  Other R packages including functionalities from `tidyverse` [@citeTidyverse], `here` [@citeHere], `readr` [@citeReadr], `ggplot2` [@citeGgplot2], `knitr` [@citeKnitr], and `dplyr` [@citeDplyr].  Greater detail concerning the utilization of the mentioned packages will be further explained in the following subsections.
+
+## Location and description data of Toronto free public WiFi
+
+The data I mainly used to generate the visualizations in this paper is City of Toronto Free Public WiFi from Open Data Toronto [@citeODT] that is an open source tool designed to be publicly available and encourage the development of valuable insights. The dataset, released by Toronto's Department of Information & Technology, captures information on location and description data free public WiFi locations in the City of Toronto and is updated monthly.
+
+The data used for analysis in this article is as of January 3, 2024. According to the data characteristics described on the portal, this data should include information such as address, building type, building name, postal code, whether there is public wifi, etc. Through systematic analysis, it is found that only building type is the main subject variable that can be used to study the influencing factors of distribution. In order to quickly extract available data, only columns with reasonable data are retained during the data cleaning process (see Table 1). Basic data cleaning of column values to shorten the description of different types of clinics and improve readability. I create a statistic on the basis of monthly groups, using kable() from knitr to create @tbl-wifi.
+
 
 ```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
+#| label: tbl-wifi
+#| tbl-cap: Sample of cleaned Free Public WiFi data
 #| echo: false
 
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
+cleaned_wifi_data %>%
+  head(8) %>%
+  kable(
+    col.names = c("Building type", "Ward", "Ward Number"),
+    digits = 1
+  )
+
 ```
 
-Talk more about it.
 
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
 
+## 2021 Ward Profiles based on the 25-Ward model
+
+In order to deeply understand the factors affecting the distribution of public wifi in Toronto, I will study the population and income of each ward in Toronto on this basis. Therefore, the regional profile dataset (Data 2021), based on the 2021 Census data, was also included in the analysis. The dataset, published by City Planning, was last updated on January 3, 2024. The dataset contains demographic, social and economic information such as income and population for each ward.
+
+Ward profile data is stored in an Excel file with multiple tabs. The relevant data used for this analysis is included as a variable in the first TAB, the 2021 Census. Therefore, only the data from this TAB is downloaded for analysis. Further data cleansing was done to transform the data, retaining only information related to income and population levels in each ward (see @tbl-ward). Based on the Toronto Open Data Portal, the package has a CSV file, 25 ward names and numbers, which contains the mapping between ward codes and ward names. I create statistic to visualize these data, using kable() from knitr to create @tbl-ward.
 ```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
+#| label: tbl-ward
+#| tbl-cap: Sample of cleaned Ward of Toronto data
+#| echo: false
+
+cleaned_ward_data %>%
+  head(8) %>%
+  kable(
+    col.names = c("Population", "Income", "Ward Number"),
+    digits = 1
+  )
+
+```
+
+
+And also planes (@fig-1). 
+```{r}
+#| label: fig-1
+#| fig-cap: Relationship between Population of each Ward and Amount of Free Public WiFi Location
 #| echo: false
 #| warning: false
 #| message: false
 
-analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
+analysis_data_1 <- read_csv(here::here("outputs/data/cleaned_ward_data.csv"))
 
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
+analysis_data_1 |> 
+  ggplot(aes(x = Population, y = WardNumber)) +
   geom_point(alpha = 0.8) +
   theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
+  labs(x = "Population of each Ward",
+       y = "Amount of Free Public WiFi Location")
+
 ```
+
 
 Talk way more about it. 
 
+```{r}
+#| label: fig-2
+#| fig-cap: Relationship between Income of each Ward and Amount of Free Public WiFi Location
+#| echo: false
+#| warning: false
+#| message: false
 
 
-# Model
+analysis_data_1 <- read_csv(here::here("outputs/data/cleaned_ward_data.csv"))
 
-The goal of our modelling strategy is twofold. Firstly,...
+analysis_data_1 |> 
+  ggplot(aes(x = Income, y = WardNumber)) +
+  geom_point(alpha = 0.8) +
+  theme_minimal() +
+  labs(x = "Income of each Ward",
+       y = "Amount of Free Public WiFi Location")
+
+```
+
 
 Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
-
-## Model set-up
-
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
-
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
 
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
 
-### Model justification
+# Conclusion {#sec-conclusion}
 
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
-
-# Results
+## Demand: Societal need for public Wi-Fi differs according to building types
 
 Our results are summarized in @tbl-modelresults.
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-```
-
-
-
-
-# Discussion
-
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
-
-## Second discussion point
-
-## Third discussion point
-
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
-
-\newpage
-
-\appendix
-
-# Appendix {-}
-
-
-# Additional data details
-
-# Model details {#sec-model-details}
-
-## Posterior predictive check
-
-In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
-
-In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
-
-```{r}
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-#| label: fig-ppcheckandposteriorvsprior
-#| layout-ncol: 2
-#| fig-cap: "Examining how the model fits, and is affected by, the data"
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
-
-
-```
-
-## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
-```{r}
-#| echo: false
-#| eval: true
-#| message: false
-#| warning: false
-#| label: fig-stanareyouokay
-#| fig-cap: "Checking the convergence of the MCMC algorithm"
-#| fig-subcap: ["Trace plot", "Rhat plot"]
-#| layout-ncol: 2
-
-
-```
-
+## Population: Higher population density correlates with increased distribution of free public WiFi
+## Economy: Income levels have limited influence on availability of free public Wi-Fi
 
 
 \newpage
